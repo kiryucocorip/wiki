@@ -25,7 +25,21 @@
 
 ### 安装 platform-tools
 
-如果你还没有安装 `adb` 和 `fastboot`, 你可以从 [Google 下载](https://dl.google.com/android/repository/platform-tools-latest-linux.zip)，
+如果你还没有安装 `adb` 和 `fastboot`：
+
+如果你使用的是基于 Debian 的发行版（包括 Ubuntu 等），请在root用户下运行以下指令：
+
+```
+apt install android-sdk-platform-tools
+```
+
+如果你使用的是基于 Arch 的发行版（包括 Manjaro 等），请在root用户下运行以下指令：
+
+```
+pacman -S platform-tools
+```
+
+如果你所使用的 Linux 发行版源中没有 platform-tools ，你可以从 [Google 下载](https://dl.google.com/android/repository/platform-tools-latest-linux.zip)，
 然后解压并运行:
 
 ```
@@ -47,7 +61,7 @@ fi
 
 ### 安装编译 exTHmUI 所需的依赖包
 
-编译 exTHmUI 依赖于几个软件包。你可以使用你 Linux 发行版的软件包管理器安装这些软件包。
+编译 exTHmUI 依赖于几个软件包。你可以使用你的 Linux 发行版的软件包管理器安装这些软件包。
 
 {% include alerts/tip.html content="[软件包管理器](https://en.wikipedia.org/wiki/Package_manager) 是 Linux 中用于安装或删除软件用的软件。在 Ubuntu 中，你可以直接使用 Ubuntu 软件中心，你也可以直接在终端使用 `apt-get` 命令。" %}
 
@@ -67,11 +81,8 @@ fi
    schedtool squashfs-tools xsltproc {% if cpu_architecture contains 'x86' %}yasm {% endif %}
    zip zlib1g-dev`
 
-{% if device.versions contains 6.0.1 %}
-要编译 exTHmUI 6.0.1, 还需要:
-
-* `maven`
-{% endif %}
+请注意，基于 Arch 的发行版只需要安装以下空包：
+* `lineageos-devel`
 
 如果 Ubuntu 版本低于 20.04 (focal), 还需要:
 
@@ -99,11 +110,17 @@ mkdir -p ~/bin
 mkdir -p ~/exTHmUI
 ```
 
-`~/bin` 目录将包含 git-repo（通常称为 "repo"），`~/android/lineage` 目录将包含 exTHmUI 的源代码。
+`~/bin` 目录将包含 git-repo（通常称为 "repo"），`~/exTHmUI` 目录将包含 exTHmUI 的源代码。
 
 ### 安装 `repo` 的命令
 
-运行以下命令来下载 `repo` 二进制文件，并使其可执行:
+如果你使用的是基于 Debian ， Arch 的发行版，请直接安装以下包：
+
+```
+repo
+```
+
+如果你锁使用的发行版源中没有此包，请运行以下命令来下载 `repo` 二进制文件，并使其可执行:
 
 ```
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
