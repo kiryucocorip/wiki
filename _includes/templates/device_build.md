@@ -31,7 +31,7 @@
 
 ### 准备设备专用代码
 
-在源码同步完成后，确保你在源码的根目录下 (`cd ~/android/lineage`), 然后运行:
+在源码同步完成后，确保你在源码的根目录下 (`cd ~/exTHmUI`), 然后运行:
 
 ```
 source build/envsetup.sh
@@ -55,7 +55,7 @@ breakfast {{ device.codename }}
 ./extract-files.sh
 ```
 
-专有二进制文件会被提取到 `~/android/lineage/vendor/{{ device.vendor_short }}` 目录。如果你遇到 "command not found" 的错误, 则 `adb` 需要放到 `~/bin`.
+专有二进制文件会被提取到 `~/enTHmUI/vendor/{{ device.vendor_short }}` 目录。如果你遇到 "command not found" 的错误, 则 `adb` 需要放到 `~/bin`.
 
 
 ### 开始编译
